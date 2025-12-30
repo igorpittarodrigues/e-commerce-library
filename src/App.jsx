@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Card from "./components/Card";
+import LivroCard from "./components/LivroCard";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
+import { livros } from "./data/livros";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -19,21 +20,25 @@ function App() {
       <div className="min-h-screen flex flex-col justify-between bg-gray-200">
         <Header carrinho={carrinho} />
 
-        <main className="p-8 flex gap-4 justify-center">
+        <main className="p-8 bg-gray-200">
 
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
 
-          <Routes>
+ <Routes>
             {/* Página principal com os produtos */}
             <Route
               path="/"
               element={
-                [1, 2, 3, 4].map((num) => (
-                  <Card
-                    key={num}
-                    titulo={`Produto ${num}`}
-                    descricao={`Descrição do produto ${num}`}
-                    cor="bg-purple-400"
-                    onAdd={() => adicionarAoCarrinho(`Produto ${num}`)}
+                livros.map((livro) => (
+                  <LivroCard
+                    key={livro.id}
+                    titulo={livro.titulo}
+                    autor={livro.autor}
+                    ano={livro.ano}
+                    genero={livro.genero}
+                    preco={livro.preco}
+                    imagem={livro.imagem}
+                    onAdd={() => adicionarAoCarrinho(livro)}
                   />
                 ))
               }
@@ -44,8 +49,14 @@ function App() {
 
             {/* Página de Cadastro */}
             <Route path="/cadastro" element={<Cadastro />} />
+
+            
           </Routes>
 
+
+
+</div>
+         
           
         </main>
 
@@ -68,3 +79,7 @@ export default App;
 //[1,2,3,4].map((num) =>( é usado para renderizar quatro componentes Card dinamicamente,
 //  num é o número atual do array que está sendo mapeado,
 //  Cada Card recebe props como titulo, descricao, cor e onAdd para adicionar o item ao carrinho.
+
+
+//p-8 flex gap-4 justify-center estiliza o main com padding,
+//  layout flexível, espaçamento entre os itens e centralização dos itens.

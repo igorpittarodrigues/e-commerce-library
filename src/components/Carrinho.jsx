@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function Carrinho({carrinho}) {
 
- console.log("Quantidade no carrinho:", carrinho.length);
+
 
   return (
     <div className="relative mr-10 ">
@@ -28,4 +28,6 @@ function Carrinho({carrinho}) {
 
 export default Carrinho;
 
-
+//relative define o elemento como referência para posicionamento absoluto dos filhos
+//mr-10 margem direita do carrinho
+//absolute coloca o elemento em relação ao pai mais próximo que tenha posição relativa
