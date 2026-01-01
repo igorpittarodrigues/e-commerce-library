@@ -12,8 +12,8 @@ function Login() {
   };
 
   return (
-    <div className="min-w-screen bg-gray-100 flex justify-center items-start ">
-      <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
+    <div className=" bg-gray-100 flex justify-center ">
+      <div className="bg-white p-10 rounded-lg shadow-lg ">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input

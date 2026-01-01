@@ -18,6 +18,13 @@ function App() {
     setCarrinho((prev) => [...prev, item]);
   };
 
+  
+
+  const removerCarrinho = (id) => {
+  setCarrinho((prev) => prev.filter((item) => item.id !== id));
+};
+
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col justify-between bg-gray-200">
@@ -42,6 +49,7 @@ function App() {
                     preco={livro.preco}
                     imagem={livro.imagem}
                     onAdd={() => adicionarAoCarrinho(livro)}
+                    
                   />
                 ))
               }
@@ -54,7 +62,7 @@ function App() {
             <Route path="/cadastro" element={<Cadastro />} />
 
             {/* Rota para o carrinho */}
-            <Route path="/carrinho" element={<CarrinhoPage carrinho={carrinho} />} />
+            <Route path="/carrinho" element={<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />} />
           </Routes>
 
 

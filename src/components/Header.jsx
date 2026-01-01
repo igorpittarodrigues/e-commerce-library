@@ -10,9 +10,9 @@ function Header({carrinho}) {
     return (
 
         <header className="bg-slate-800 text-white p-5 flex justify-between">
-
-            <h1 className=" font-bold  " >IGORTEKA</h1>
-
+            
+            <Link to="/"><h1 className=" font-bold  " >IGORTEKA</h1></Link>
+          
 
             <nav className="flex gap-4 mx-10" > 
 
@@ -32,7 +32,7 @@ function Header({carrinho}) {
                 Login   
               </Link>
 
-              
+
             </nav>
       
         

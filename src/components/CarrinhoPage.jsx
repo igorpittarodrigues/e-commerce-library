@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoIosRemoveCircleOutline } from "react-icons/io";
 
-const CarrinhoPage=({carrinho}) =>{
+const CarrinhoPage=({carrinho, removerCarrinho}) =>{
 
 return(
 
@@ -36,9 +37,16 @@ return(
                         </div>
 
 
-                        <div>
+                        <div className='flex items-center gap-4 ml-2'> 
                             <span className='font-bold'>{item.preco.toFixed(2)}</span>
-                        </div>
+                        
+                            <button onClick={() => removerCarrinho(item.id)} 
+                            className='bg-white text-gray-500 px-3 py-1  hover:bg-gray-200 rounded-full'>
+                                <IoIosRemoveCircleOutline />
+                            </button>
+
+                         </div>
+                        
 
                     </div>
               ) ) }
