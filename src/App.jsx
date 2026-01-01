@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import { livros } from "./data/livros";
+import CarrinhoPage from "./components/CarrinhoPage";
+
+
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -50,7 +53,8 @@ function App() {
             {/* Página de Cadastro */}
             <Route path="/cadastro" element={<Cadastro />} />
 
-            
+            {/* Rota para o carrinho */}
+            <Route path="/carrinho" element={<CarrinhoPage carrinho={carrinho} />} />
           </Routes>
 
 

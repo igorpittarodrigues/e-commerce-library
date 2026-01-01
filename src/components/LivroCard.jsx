@@ -16,3 +16,6 @@ function LivroCard({ titulo,autor,ano,genero,preco,imagem, onAdd }) {
 }
 
 export default LivroCard;
+
+//onClick={() => onAdd({ titulo, autor, ano, genero, preco, imagem })} 
+// serve para passar os dados do livro selecionado para a função onAdd quando o botão é clicado.

@@ -15,14 +15,24 @@ function Header({carrinho}) {
 
 
             <nav className="flex gap-4 mx-10" > 
+
+
+
+
+               <Link to="/carrinho">   
                 <p className="font-bold mr-1">Carrinho</p>
-                <Carrinho  carrinho={carrinho}
+                <Carrinho  carrinho={carrinho}/>
+                 </Link>
+
+
                 
-                /> {/* Componente Carrinho exibindo o número de itens no carrinho */}
+                 {/* Componente Carrinho exibindo o número de itens no carrinho */}
                 
                <Link to="/login" className=" bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
                 Login   
               </Link>
+
+              
             </nav>
       
         
