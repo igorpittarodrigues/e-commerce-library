@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LivroCard from "./components/LivroCard";
@@ -12,17 +14,31 @@ import CarrinhoPage from "./components/CarrinhoPage";
 
 
 function App() {
-  const [carrinho, setCarrinho] = useState([]);
+  
+
+  const [carrinho, setCarrinho] = useState(() => {
+  const carrinhoSalvo = localStorage.getItem("carrinho");
+  return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+});
+
+
 
   const adicionarAoCarrinho = (item) => {
     setCarrinho((prev) => [...prev, item]);
   };
+  useEffect(() => {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}, [carrinho]);
+
 
   
 
   const removerCarrinho = (id) => {
   setCarrinho((prev) => prev.filter((item) => item.id !== id));
 };
+useEffect(() => {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}, [carrinho]);
 
 
   return (
