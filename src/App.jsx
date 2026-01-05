@@ -46,16 +46,20 @@ useEffect(() => {
       <div className="min-h-screen flex flex-col justify-between bg-gray-200">
         <Header carrinho={carrinho} />
 
-        <main className="p-8 bg-gray-200">
+        <main className="p-8 bg-gray-200 flex-1">
 
-<div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
 
- <Routes>
+
+        <Routes>
             {/* Página principal com os produtos */}
+
             <Route
               path="/"
               element={
-                livros.map((livro) => (
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
+
+                 {livros.map((livro) => (
                   <LivroCard
                     key={livro.id}
                     titulo={livro.titulo}
@@ -64,10 +68,13 @@ useEffect(() => {
                     genero={livro.genero}
                     preco={livro.preco}
                     imagem={livro.imagem}
-                    onAdd={() => adicionarAoCarrinho(livro)}
-                    
+                    onAdd={() => adicionarAoCarrinho(livro)}        
                   />
-                ))
+                ))}
+
+
+                </div>
+
               }
             />
 
@@ -79,11 +86,11 @@ useEffect(() => {
 
             {/* Rota para o carrinho */}
             <Route path="/carrinho" element={<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />} />
-          </Routes>
+        </Routes>
 
 
 
-</div>
+
          
           
         </main>
