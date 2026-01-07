@@ -43,7 +43,7 @@ useEffect(() => {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col justify-between bg-gray-200">
+      <div className="min-h-screen flex flex-col justify-between bg-gray-400">
         <Header carrinho={carrinho} />
 
         <main className="p-8 bg-gray-200 flex-1">
@@ -71,7 +71,6 @@ useEffect(() => {
                     onAdd={() => adicionarAoCarrinho(livro)}        
                   />
                 ))}
-
 
                 </div>
 

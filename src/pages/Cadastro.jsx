@@ -1,75 +1,63 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Cadastro() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
+  const navigate = useNavigate();
 
-const [email, setEmail] = React.useState("");
-const [senha, setSenha] = React.useState("");
-const navigate = useNavigate(); 
+  const handleCadastro = (e) => {
+    e.preventDefault();
 
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ email, senha })
+    );
 
-
-const handleCadastro = () => {
-  localStorage.setItem(
-    "user",
-    JSON.stringify({ email, senha })
-  );
-
-  alert("Cadastro realizado!");
-  navigate("/login");
-};
-
-
-
-
+    alert("Cadastro realizado com sucesso!");
+    navigate("/login");
+  };
 
   return (
-   <div className="min-h-screen bg-gray-200 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-200 flex justify-center items-center">
+      <div className="max-w-lg w-full bg-white p-6 border rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Cadastro de Usuário
+        </h2>
 
-      <div className="max-w-lg w-full bgw-full mb-3 p-2 border rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center">Cadastro de Usuário</h2>
+        <form
+          onSubmit={handleCadastro}
+          className="grid grid-cols-2 gap-x-8 gap-y-6"
+        >
+          <input
+            type="email"
+            placeholder="Email"
+            className="col-span-2 p-2 border rounded"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <form onSubmit={handleCadastro}
-        className="grid grid-cols-2 gap-x-8 gap-y-6">
+          <input
+            type="password"
+            placeholder="Senha"
+            className="col-span-2 p-2 border rounded"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
 
-            
-          <input type="text" placeholder="Nome completo" className="w-full mb-3 p-2 border rounded" />
-
-          <input type="email" placeholder="Email" className="bw-full mb-3 p-2 border rounded" />
-          <input type="password" placeholder="Senha" className="w-full mb-3 p-2 border rounded" />
-          
-          <input type="text" placeholder="CPF" className="w-full mb-3 p-2 border rounded" />
-
-
-          <input type="text" placeholder="Endereço" className="w-full mb-3 p-2 border rounded" />
-          <input type="text" placeholder="Complemento" className="w-full mb-3 p-2 border rounded" />
-          <input type="text" placeholder="Cidade" className="w-full mb-3 p-2 border rounded" />
-          <input type="text" placeholder="Estado" className="w-full mb-3 p-2 border rounded" />
-
-
-          <input type="text" placeholder="Número do cartão" className="w-full mb-3 p-2 border rounded" />
-          <input type="text" placeholder="Validade (MM/AA)" className="w-full mb-3 p-2 border rounded" />
-          <input type="text" placeholder="CVV" className="w-full mb-3 p-2 border rounded" />
-
-          <button  
-          className="bg-green-500 text-w-full mb-3 p-2 border rounded hover:bg-green-600"
-          type="submit"
+          <button
+            type="submit"
+            className="col-span-2 bg-green-500 text-white p-2 rounded hover:bg-green-600"
           >
-
-          Finalizar Cadastro
-
+            Finalizar Cadastro
           </button>
         </form>
-
-        
       </div>
     </div>
   );
 }
 
 export default Cadastro;
-
-
-//min-h-screen faz a div ocupar a altura total da tela
-//bg-gray-200 define a cor de fundo cinza claro
-//flex justify-center items-center centraliza o conteúdo tanto horizontalmente quanto verticalmente
-//bgw-full mb-3 p-2 border rounded-lg shadow-lg cria um cartão branco com padding, bordas arredondadas e sombra
-//grid grid-cols-2 gap-x-8 gap-y-6 cria um grid com 2 colunas e espaçamento entre os itens

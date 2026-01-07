@@ -20,7 +20,7 @@ return(
             </div>
 
         ) : (
-            <div className='bg-white p-6 rounded shadow'>
+            <div className='  bg-white p-6 rounded shadow'>
                 {carrinho.map((item,index) =>(
 
                     <div key={index} className='flex justify-between items-center border-b py-2'>
