@@ -101,19 +101,27 @@ useEffect(() => {
 }
 
 export default App;
-// carrinho é o estado que armazena os itens do carrinho, 
-//  setCarrinho é a função para atualizar esse estado,
-//  useState([]) inicializa o carrinho como um array vazio
+/* carrinho é o estado que armazena os itens do carrinho, 
+  setCarrinho é a função para atualizar esse estado,
+  useState([]) inicializa o carrinho como um array vazio
 
+(prev) => prev.filter((item) => item.id !== id)
+  é uma função que remove um item do carrinho com base no seu id,
 
-//(item) => { setCarrinho((prev) => [...prev, item]); } é uma função que adiciona um novo item ao carrinho,
-//  prev representa o estado anterior do carrinho,
-//  [...prev, item] cria um novo array que inclui todos os itens anteriores mais o novo item.
+(item) => { setCarrinho((prev) => [...prev, item]); } é uma função que adiciona um novo item ao carrinho,
+  prev representa o estado anterior do carrinho,
+  [...prev, item] cria um novo array que inclui todos os itens anteriores mais o novo item.
 
-//[1,2,3,4].map((num) =>( é usado para renderizar quatro componentes Card dinamicamente,
-//  num é o número atual do array que está sendo mapeado,
-//  Cada Card recebe props como titulo, descricao, cor e onAdd para adicionar o item ao carrinho.
+  useEffect( () => {} ) serve para executar efeitos colaterais em componentes funcionais do React.
+  Ele aceita dois argumentos: uma função de efeito e uma lista de dependências.
 
+  localStorage.setItem("carrinho", JSON.stringify(carrinho)); 
+  isso converte o estado carrinho em uma string JSON e o armazena no localStorage do navegador com a chave "carrinho".
 
-//p-8 flex gap-4 justify-center estiliza o main com padding,
-//  layout flexível, espaçamento entre os itens e centralização dos itens.
+  [carrinho] é a lista de dependências para o useEffect. 
+  Isso significa que o efeito será executado sempre que o estado carrinho mudar.
+)
+
+layout flexível, espaçamento entre os itens e centralização dos itens.
+
+*/  

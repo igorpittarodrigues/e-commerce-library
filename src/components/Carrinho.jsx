@@ -29,5 +29,6 @@ function Carrinho({carrinho}) {
 export default Carrinho;
 
 //relative define o elemento como referência para posicionamento absoluto dos filhos
-//mr-10 margem direita do carrinho
+// mr-10 margem direita do carrinho
+// ml-1 margem esquerda do número de itens no carrinho
 //absolute coloca o elemento em relação ao pai mais próximo que tenha posição relativa

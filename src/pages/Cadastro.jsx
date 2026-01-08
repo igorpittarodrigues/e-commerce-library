@@ -15,7 +15,7 @@ function Cadastro() {
       JSON.stringify({ email, senha })
     );
 
-    alert("Cadastro realizado com sucesso!");
+    
     navigate("/login");
   };
 
