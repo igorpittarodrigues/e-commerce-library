@@ -10,8 +10,8 @@ function Footer(){
         <p className="">© 2024 IGORTEKA. Todos os direitos reservados.</p>
 
 
-        <div className="columns-3 text-sm mx-10 pt-4">
-            <p className="text-left leading-relaxed p-4 m">
+        <div className="grid grid-cols-1 grid grid-cols-3 text-sm  gap-4 p-4">
+            <p className="text-left leading-relaxed ">
                 Rua Vila Nelita <br />
                 3111 - Bairro Lagoa Seca <br />
                 Campina Grande - PB <br />
@@ -19,22 +19,22 @@ function Footer(){
             </p>
 
 
-    <div className="p-4 space-y-2">
+    <div className="text-left">
 
 
-        < div className="flex items-center gap-2">
+        < div >
           <AiFillMail size={15} />
           <span>igorteka@gmail.com</span>
         </div>
 
 
-        <div className="flex items-center gap-2">
+        <div >
           <AiFillInstagram size={15} />
           <span>@igorteka</span>
         </div>
 
 
-        <div className="flex items-center gap-2">
+        <div >
          <AiFillFacebook size={15} />
         <span>IGORTEKA</span>
         </div>
@@ -44,7 +44,7 @@ function Footer(){
         
 
 
-        <div className="p-4 flex flex-col items-start ">
+        <div className="text-left">
                 
                 <h3 className="font-bold ">Fale conosco</h3>
                 <span>Telefone: (83) 99999-9999</span>
