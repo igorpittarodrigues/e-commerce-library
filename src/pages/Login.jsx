@@ -5,29 +5,42 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login() {
-  const [email, setEmail] = useState(""); //estado para armazenar o email digitado pelo usuário
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
-
 
 
   const handleLogin = (e) => {
   e.preventDefault();
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  
+   // Recupera lista de usuários
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  if (!user) {
-    alert("Nenhum usuário cadastrado.");
-    return;
-  }
+    if (usuarios.length === 0) {
+      alert("Nenhum usuário cadastrado.");
+      return;
+    }
 
-  if (user.email === email && user.senha === senha) {
-    localStorage.setItem("auth", "true"); // estado de login
-    alert("Login bem-sucedido!");
-    navigate("/");
-  } else {
-    alert("Email ou senha incorretos.");
-  }
+
+
+
+   // Procura usuário com email e senha correspondentes
+    const user = usuarios.find(                         //find() procura o primeiro elemento que satisfaz a condição fornecida na função.
+      (u) => u.email === email && u.senha === senha
+    );
+
+    if (user) {
+      // Salva estado de login e usuário atual
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("userLogado", JSON.stringify(user));
+
+      alert(`Login bem-sucedido! Bem-vindo, ${user.nome}`);
+      navigate("/");
+    } else {
+      alert("Email ou senha incorretos.");
+    }
+
 };
 
 
@@ -38,6 +51,7 @@ function Login() {
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
+
 
           <input
             type="email"
@@ -90,6 +104,9 @@ Se não houver nenhum usuário cadastrado, user será null.
 
    onSubmit={handleLogin} serve para associar a função handleLogin ao evento de submissão do formulário.
    submissão do formulário é o ato de enviar os dados do formulário para processamento.
+
+   onChange={} serve para associar uma função ao evento de mudança de valor em um campo de entrada (input).
+
 
    onChange={(e) => setSenha(e.target.value)} atualiza o estado senha 
    com o valor digitado no campo de senha sempre que ele muda.

@@ -4,9 +4,10 @@ function LivroCard({ titulo,autor,ano,genero,preco,imagem, onAdd }) {
     return (
    <div className="flex flex-col md:flex-row bg-white shadow-md rounded overflow-hidden w-full max-w-2xl h-auto md:h-64">
 
+
     <img src={imagem}
      alt={titulo} 
-     className="w-1/3 h-full rounded mb-2" />
+     className="w-1/3 h-full rounded mb-2 " />
 
 
    <div className=" flex flex-col justify-center w-full md:w-2/3 p-4 ">

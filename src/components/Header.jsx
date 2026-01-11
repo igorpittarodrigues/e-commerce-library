@@ -11,7 +11,7 @@ function Header({carrinho}) {
    const navigate = useNavigate();
 
    const isAuth= localStorage.getItem("auth")==="true";
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("userLogado") || []);
 
    const handleLogout = () =>{
     localStorage.removeItem("auth");
@@ -39,7 +39,7 @@ function Header({carrinho}) {
                 <>
                 
                 <span className="text-sm text-gray-200">
-                  Olá,{user?.email}
+                  Olá,{user?.nome}
                 </span>
                 
                 
