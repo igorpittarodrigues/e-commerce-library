@@ -10,19 +10,18 @@ function Login() {
   const navigate = useNavigate();
 
 
+
   const handleLogin = (e) => {
   e.preventDefault();
 
   
    // Recupera lista de usuários
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || "[]";
 
     if (usuarios.length === 0) {
       alert("Nenhum usuário cadastrado.");
       return;
     }
-
-
 
 
    // Procura usuário com email e senha correspondentes
@@ -37,8 +36,11 @@ function Login() {
 
       alert(`Login bem-sucedido! Bem-vindo, ${user.nome}`);
       navigate("/");
+
     } else {
+
       alert("Email ou senha incorretos.");
+
     }
 
 };

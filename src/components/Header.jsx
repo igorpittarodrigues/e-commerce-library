@@ -11,7 +11,11 @@ function Header({carrinho}) {
    const navigate = useNavigate();
 
    const isAuth= localStorage.getItem("auth")==="true";
-    const user = JSON.parse(localStorage.getItem("userLogado") || []);
+   
+   const user = JSON.parse(localStorage.getItem("userLogado") || "[]");
+
+   
+
 
    const handleLogout = () =>{
     localStorage.removeItem("auth");
@@ -35,33 +39,10 @@ function Header({carrinho}) {
                 </Link>
 
                 
-              {isAuth ? (
-                <>
-                
-                <span className="text-sm text-gray-200">
-                  Olá,{user?.nome}
-                </span>
-                
-                
-                <button 
-                  onClick={handleLogout}
-                  className="bg-red-500 px-4 py-2 rounded hover:bg-red-600">
-
-                  Logout
-
-                </button>
-                
-                </>
-
-              ) :(
-
-
-              <Link to="/login" className=" bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
-                Login   
-              </Link>
-
-                
-              )}
+             
+              {userLogado.nome ? <span>Olá, {userLogado.nome}</span> 
+              : 
+              <span>Olá, visitante</span>}
 
             </nav>
       

@@ -21,6 +21,7 @@ function App() {
   return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
 });
 
+ 
 
 
   const adicionarAoCarrinho = (item) => {
@@ -68,8 +69,19 @@ useEffect(() => {
                     genero={livro.genero}
                     preco={livro.preco}
                     imagem={livro.imagem}
-                    onAdd={() => adicionarAoCarrinho(livro)}        
+                    onAdd={() => 
+
+                    {const isAuth=localStorage.getItem("isAuth");
+                      if(isAuth!=="true"){
+                        alert("Por favor, faça login para adicionar itens ao carrinho.");
+                        return;   //return para sair da função se não estiver autenticado
+                      }                      
+                             
+                      adicionarAoCarrinho(livro)
+                    }}    
+
                   />
+
                 ))}
 
                 </div>
@@ -84,7 +96,13 @@ useEffect(() => {
             <Route path="/cadastro" element={<Cadastro />} />
 
             {/* Rota para o carrinho */}
-            <Route path="/carrinho" element={<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />} />
+            <Route path="/carrinho" element={
+             localStorage.getItem("auth")=== true ? (<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />)
+             :(<Login/>)
+              
+              } 
+              />
+
         </Routes>
 
 
@@ -123,5 +141,9 @@ export default App;
 )
 
 layout flexível, espaçamento entre os itens e centralização dos itens.
+
+
+router para gerenciar a navegação entre diferentes páginas do aplicativo.
+routes para definir as diferentes rotas do aplicativo.
 
 */  
