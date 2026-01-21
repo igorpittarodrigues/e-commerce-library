@@ -22,24 +22,24 @@ function App() {
 });
 
  
+useEffect(() => {
+   localStorage.setItem("carrinho", JSON.stringify(carrinho));
+ }, [carrinho]);
+
+
 
 
   const adicionarAoCarrinho = (item) => {
     setCarrinho((prev) => [...prev, item]);
   };
-  useEffect(() => {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}, [carrinho]);
-
+ 
 
   
 
   const removerCarrinho = (id) => {
   setCarrinho((prev) => prev.filter((item) => item.id !== id));
 };
-useEffect(() => {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}, [carrinho]);
+
 
 
   return (
@@ -69,17 +69,21 @@ useEffect(() => {
                     genero={livro.genero}
                     preco={livro.preco}
                     imagem={livro.imagem}
-                    onAdd={() => 
 
-                    {const isAuth=localStorage.getItem("isAuth");
-                      if(isAuth!=="true"){
-                        alert("Por favor, faça login para adicionar itens ao carrinho.");
-                        return;   //return para sair da função se não estiver autenticado
-                      }                      
-                             
-                      adicionarAoCarrinho(livro)
+                    onAdd={() => {
+                       
+                    const isAuth = localStorage.getItem("auth");
+
+                     if (isAuth !== "true") {
+                      alert("Você precisa estar logado para adicionar ao carrinho.");
+                      navigate("/login");
+                      return;
+                     }         
+
+                                    
+                      {adicionarAoCarrinho(livro)}                                    
+                    
                     }}    
-
                   />
 
                 ))}
@@ -97,7 +101,9 @@ useEffect(() => {
 
             {/* Rota para o carrinho */}
             <Route path="/carrinho" element={
-             localStorage.getItem("auth")=== true ? (<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />)
+
+             localStorage.getItem("auth")=== "true" ?
+              (<CarrinhoPage carrinho={carrinho}  removerCarrinho={removerCarrinho} />)
              :(<Login/>)
               
               } 

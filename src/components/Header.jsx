@@ -12,9 +12,9 @@ function Header({carrinho}) {
 
    const isAuth= localStorage.getItem("auth")==="true";
    
-   const user = JSON.parse(localStorage.getItem("userLogado") || "[]");
+   const user = JSON.parse(localStorage.getItem("user") || null); 
 
-   
+   // Recupera os dados do usuário armazenados no localStorage ou null se não houver dados
 
 
    const handleLogout = () =>{
@@ -33,23 +33,45 @@ function Header({carrinho}) {
             <nav className="flex gap-4 mx-10" > 
 
 
-               <Link to="/carrinho">   
+               <Link to="/carrinho"   className="flex items-center gap-2">   
                  <p className="font-bold mr-1">Carrinho</p> 
                  <Carrinho  carrinho={carrinho}/> 
                 </Link>
-
+              
                 
-             
-              {userLogado.nome ? <span>Olá, {userLogado.nome}</span> 
-              : 
-              <span>Olá, visitante</span>}
+            {isAuth ? (
+              <>
+
+            <span className="text-sm">
+              Olá, {user?.nome}
+            </span>
+
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+             <button
+                onClick={() => navigate("/login")}
+              className="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Login
+            </button>
+        )}
+
+
+
+
 
             </nav>
       
         </header>
 
 
-    )
+    );
 }
 export default Header
 

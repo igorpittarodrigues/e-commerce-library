@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
-  const [formData,setFormData]= useState(
+  const [formData,setFormData]= useState( /* useState é uma função do React que permite gerenciar o estado de um componente. */
     { 
       nome:"",
       email:"",
@@ -36,8 +36,7 @@ function Cadastro() {
       setFormData({
         ...formData,
         endereco:{
-          ...formData.endereco,
-          [name]:value
+          
         }
       })
 
@@ -94,7 +93,7 @@ function Cadastro() {
             type="email"
             placeholder="Email"
             className="col-span-2 p-2 border rounded"
-            value={formData.email}                               // value={email} seta o valor do input para o estado email
+            value={formData.email}                              
             onChange={handleChange}  
             required
           />
@@ -144,6 +143,7 @@ function Cadastro() {
           <button
             type="submit"       
             className="col-span-2 bg-green-500 text-white p-2 rounded hover:bg-green-600"
+            
           >
             Finalizar Cadastro
           </button>
@@ -154,7 +154,7 @@ function Cadastro() {
 }
 
 export default Cadastro;
-/* onChange={(e) => setEmail(e.t arget.value)} atualiza o estado email 
+/* onChange={(e) => setEmail(e.target.value)} atualiza o estado email 
 com o valor digitado no campo de email
 
 onchhange atualiza o estado nome com o valor digitado no campo nome
@@ -162,5 +162,6 @@ onchhange atualiza o estado nome com o valor digitado no campo nome
 
  type="submit" é para 
 
-
+...formData.endereco,  -> manter os outros campos do endereço inalterados
+          [name]:value -> -atualiza o campo específico do endereço com o novo valor digitado.
 */

@@ -10,7 +10,7 @@ function LivroCard({ titulo,autor,ano,genero,preco,imagem, onAdd }) {
      className="w-1/3 h-full rounded mb-2 " />
 
 
-   <div className=" flex flex-col justify-center w-full md:w-2/3 p-4 ">
+   <div className=" flex flex-col justify-center  w-full md:w-2/3 p-4 ">
     <h3 className="text-xl font-bold">{titulo}</h3>
     <p className="text-gray-700">Autor: {autor}</p>
     <p className="text-gray-700">Ano: {ano}</p>

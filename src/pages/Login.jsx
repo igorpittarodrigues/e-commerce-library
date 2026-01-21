@@ -16,32 +16,27 @@ function Login() {
 
   
    // Recupera lista de usuários
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || "[]";
+    const user = JSON.parse(localStorage.getItem("user"))
 
-    if (usuarios.length === 0) {
-      alert("Nenhum usuário cadastrado.");
-      return;
+    if (!user){
+      alert("Usuário não cadastrado ")
+      return ;
     }
 
+   if (user.email === email && user.senha === senha){
+    
+    localStorage.setItem("auth","true") // auth e true são usados para indicar que o usuário está logado.
+    alert("Login realizado com sucesso ")
+    navigate("/")
 
-   // Procura usuário com email e senha correspondentes
-    const user = usuarios.find(                         //find() procura o primeiro elemento que satisfaz a condição fornecida na função.
-      (u) => u.email === email && u.senha === senha
-    );
+   } else{
 
-    if (user) {
-      // Salva estado de login e usuário atual
-      localStorage.setItem("auth", "true");
-      localStorage.setItem("userLogado", JSON.stringify(user));
+    alert("Email ou senha incorretos ")
 
-      alert(`Login bem-sucedido! Bem-vindo, ${user.nome}`);
-      navigate("/");
+   }
 
-    } else {
 
-      alert("Email ou senha incorretos.");
-
-    }
+   
 
 };
 

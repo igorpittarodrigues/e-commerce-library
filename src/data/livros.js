@@ -73,9 +73,39 @@ export  const livros = [
     genero: "Distopia",
     preco: 49.90,
     imagem: "https://m.media-amazon.com/images/I/416FntWyJQL._SY445_SX342_FMwebp_.jpg"
+},
+
+{
+   id: 7,
+   titulo: "White nights",
+   autor: "Fyodor Dostoevsky",
+   ano: 1864,
+   genero: "Romance",
+   preco: 44.90,
+   imagem: "https://archive.org/services/img/whitenights0000dost"
+},
+
+{
+  id:8,
+  titulo: "Letter to father",
+  autor: "Franz Kafka",
+  ano: 1919,
+  genero: "Carta",
+  preco: 34.90,
+  imagem: "https://m.media-amazon.com/images/I/51g4YIeDx1L.jpg"
+},
+
+{
+    id:9,
+    titulo:"The Metamorphosis",
+    autor:"Franz Kafka",
+    ano:1915,
+    genero:"Novela",
+    preco:29.90,
+    imagem:"https://http2.mlstatic.com/D_NQ_NP_647103-MLA87133187709_072025-O.webp  "
+
+
 }
-
-
 
 
 
